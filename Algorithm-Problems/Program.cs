@@ -27,20 +27,31 @@
                         permute.Driver();
                         break;
                     case 2:
-                        BinarySearchWord binarySearchWord = new BinarySearchWord();
-                        binarySearchWord.DriverMethod();
+                        List<string> wordArray = new List<string> { "Application", "Bread", "Cake", "Dog", "Eggs", "Pizza", "Roti", "Sabzi" };
+                        BinarySearchWord<string> binarySearchWord = new BinarySearchWord<string>();
+                        binarySearchWord.DriverMethod(wordArray);
                         break;
                     case 3:
-                        InsertionSort insertionSort = new InsertionSort();
+                        InsertionSort<int> insertionSort = new InsertionSort<int>();
                         insertionSort.Insertion();
                         break;
                     case 4:
-                        BubbleSort bs = new BubbleSort();
+                        BubbleSort<int> bs = new BubbleSort<int>();
                         bs.Bubble();
                         break;
                     case 5:
-                        Merge_Sort mergeSort = new Merge_Sort();
-                        mergeSort.Driver();
+                        Console.Write("Enter integers values separated by spaces to sort : ");
+                        //Taking input from user and storing it to strings array of type string
+                        string[] strings = Console.ReadLine().Split();
+
+                        int[] sortArray = new int[strings.Length];
+                        //Converting each string value in strings array to integer type and storing it to sortArray for further calculation
+                        for (int i = 0; i < strings.Length; i++)
+                        {
+                            sortArray[i] = Convert.ToInt32(strings[i]);
+                        }
+                        MergeSort<int> mergeSort = new MergeSort<int>();
+                        mergeSort.Driver(sortArray);
                         break;
                     case 6:
                         AnagramDetection anagramDetection = new AnagramDetection();

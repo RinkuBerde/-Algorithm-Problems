@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Algorithm_Problems
 {
-    internal class BinarySearchWord
+    internal class BinarySearchWord<T> where T : IComparable
     {
-        static int BinarySearch(String[] wordArray, int leftIndex, int rightIndex, String findIndexOfWord)
+        static int BinarySearch(List<T> wordArray, int leftIndex, int rightIndex, String findIndexOfWord)
         {
             //while the leftIndex is at left and the rightIndex is at right
             while (leftIndex <= rightIndex)
@@ -18,7 +18,7 @@ namespace Algorithm_Problems
 
                 //Declaring variable IsPresent to check that the entered word is present at the middle index or not
                 int IsPresent = findIndexOfWord.CompareTo(wordArray[middelIndex]);
-                //Here I used CompareTo method for comparing string1.CompareTo(string2)
+                //Here we used CompareTo method for comparing string1.CompareTo(string2)
                 //CompareTo method will return 0 if string1 is matched with string2 by ASCII standards
                 //will return 1 if string1 is larger than sstring2 by ASCII standards
                 //will return -1 if string1 is smaller than string2 by ASCII standards
@@ -47,14 +47,14 @@ namespace Algorithm_Problems
             return -1;
         }
 
-        public void DriverMethod()
+        public void DriverMethod(List<T> wordArray)
         {
             //Creating an ASCII sorted array of words
             //If we Create an unsorted array and then try to search, the search results might give incorrect results
             //If we still want to give unsorted array for searching, we first have to sort it then search in it
-            String[] wordArray = { "Application", "Bread", "Cake", "Dog", "Eggs", "Pizza", "Roti", "Sabzi" };
+
             Console.Write("Words present in the list are : ");
-            foreach (String word in wordArray)
+            foreach (T word in wordArray)
             {
                 Console.Write(" " + word);
             }
@@ -64,7 +64,7 @@ namespace Algorithm_Problems
             //Passing (The array of entered words, index of 1st word in array, index of last word in array, word we want to find)
             //to the BinarySearch method
             //foundAtPosition is used to store the position returned by BinarySearch method
-            int foundAtPosition = BinarySearch(wordArray, 0, wordArray.Length - 1, findIndexOfWord);
+            int foundAtPosition = BinarySearch(wordArray, 0, wordArray.Count - 1, findIndexOfWord);
 
             //BinarySearch method returns -1 when the entered word is not present in the list
             if (foundAtPosition == -1)

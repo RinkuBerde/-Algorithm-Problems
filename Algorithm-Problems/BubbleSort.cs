@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Algorithm_Problems
 {
-    internal class BubbleSort
+    internal class BubbleSort<T> where T : IComparable
     {
         public void Bubble()
         {
-
-            BubbleSort bubbleSort = new BubbleSort();
+            BubbleSort<T> bubbleSort = new BubbleSort<T>();
             Console.Write("Enter integers values separated by spaces to sort : ");
 
             //Taking input from user and storing it to strings array of type string
@@ -23,6 +22,7 @@ namespace Algorithm_Problems
             {
                 sortArray[i] = Convert.ToInt32(strings[i]);
             }
+
             Console.Write("Array before sorting is : ");
             bubbleSort.PrintArray(sortArray);
             //Start from 1st element in the array till the last but one element
@@ -43,9 +43,10 @@ namespace Algorithm_Problems
                     }
                 }
             }
-            Console.Write("Sorted Array using Bubble sort is : ");
+            Console.Write("Sorted Array usin Bubble sort is : ");
             bubbleSort.PrintArray(sortArray);
         }
+
         public void PrintArray(int[] sortArray)
         {
             for (int i = 0; i < sortArray.Length; i++)
