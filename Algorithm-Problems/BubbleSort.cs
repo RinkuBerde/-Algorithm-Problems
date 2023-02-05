@@ -10,6 +10,7 @@ namespace Algorithm_Problems
     {
         public void Bubble()
         {
+
             BubbleSort bubbleSort = new BubbleSort();
             Console.Write("Enter integers values separated by spaces to sort : ");
 
